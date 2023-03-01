@@ -5,6 +5,10 @@ import _r1 from "../assets/images/rarity/_rarity_1.png";
 import _r2 from "../assets/images/rarity/_rarity_2.png";
 import _r3 from "../assets/images/rarity/_rarity_3.png";
 
+
+
+
+
 const LipRenderer = ({ lip = null, size = 200, style }) => {
   if (!lip) {
     return null;
@@ -40,6 +44,7 @@ const LipRenderer = ({ lip = null, size = 200, style }) => {
   };
 
   return (
+  
     <div
       style={{
         minWidth: size,
@@ -70,6 +75,7 @@ const LipRenderer = ({ lip = null, size = 200, style }) => {
       />
       <img alt={"rarity"} src={rarity} style={lipStyle} />
     </div>
+   
   );
 };
 

@@ -41,6 +41,11 @@ import am3_3 from "../assets/images/parts/am3/3.png";
 import am3_4 from "../assets/images/parts/am3/4.png";
 import am3_5 from "../assets/images/parts/am3/5.png";
 
+import water from "../assets/images/tool/1.png"
+import scissor from "../assets/images/tool/2.png"
+import fertilizer from "../assets/images/tool/3.png"
+
+
 export const parts = {
   bg: [b_1, b_2, b_3, b_4, b_5],
   mask: [m_1, m_2, m_3, m_4, m_5],
@@ -49,4 +54,5 @@ export const parts = {
   addonMouth1: [am1_1, am1_2, am1_3, am1_4, am1_5],
   addonMouth2: [am2_1, am2_2, am2_3, am2_4, am2_5],
   addonMouth3: [am3_1, am3_2, am3_3, am3_4, am3_5],
+  tools: [water, water, scissor, fertilizer],
 };

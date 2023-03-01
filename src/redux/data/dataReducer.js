@@ -2,6 +2,8 @@ const initialState = {
   loading: false,
   allLips: [],
   allOwnerLips: [],
+  allTools: [],
+  allOwnerTools:[],
   error: false,
   errorMsg: "",
 };
@@ -19,6 +21,8 @@ const dataReducer = (state = initialState, action) => {
         loading: false,
         allLips: action.payload.allLips,
         allOwnerLips: action.payload.allOwnerLips,
+        allTools: action.payload.allTools,
+        allOwnerTools: action.payload.allOwnerTools,
       };
     case "CHECK_DATA_FAILED":
       return {

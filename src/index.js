@@ -12,6 +12,9 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import '../node_modules/mdb-react-ui-kit/dist/css/mdb.min.css'
 
 const router = createBrowserRouter([
   {

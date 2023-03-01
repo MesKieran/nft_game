@@ -7,7 +7,7 @@ export const Screen = styled.div`
   background-size: cover;
   background-position: center;
   width: 100%;
-  min-height: 100vh;
+  min-height: 160vh;
   display: flex;
   flex-direction: column;
 `;
@@ -66,6 +66,21 @@ export const TextDescription = styled.p`
   color: var(--white);
   font-size: 14px;
   font-weight: 600;
+`;
+
+export const TextDescription_2 = styled.p`
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  padding-top: 20px;
+`;
+
+export const TextDescription_3 = styled.p`
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: -20px;
+  margin-bottom: 0px;
 `;
 
 export const StyledClickable = styled.div`

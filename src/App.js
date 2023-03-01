@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import LipRenderer from "./components/lipRenderer";
-import _color from "./assets/images/bg/_color.png";
+import _bgI from "./assets/images/bg/backgrounImg.png";
+import Footer from './Webpage component/Footer';
+import NavBar from "./Webpage component/Navbar";
+import Dropdown from "./Webpage component/DropDown";
+
+
+
+import {Button} from 'bootstrap'
+
+
+
 
 
 function App() {
@@ -17,6 +28,24 @@ function App() {
   console.log(data);
   console.log(blockchain.account);
 
+  const getBalance = (_account) => {
+    setLoading(true);
+    blockchain.lipToken.methods
+      .balanceOf(_account)
+      .send({
+        from: _account,
+      })
+      .once("error", (err) => {
+        setLoading(false);
+        console.log(err);
+      })
+      .then((receipt) => {
+        setLoading(false);
+        console.log(receipt);
+        dispatch(fetchData(blockchain.account));
+      });
+  };
+
   const mintNFT = (_account, _name) => {
     setLoading(true);
     blockchain.lipToken.methods
@@ -24,6 +53,25 @@ function App() {
       .send({
         from: _account,
         value: blockchain.web3.utils.toWei("0.01", "ether"),
+      })
+      .once("error", (err) => {
+        setLoading(false);
+        console.log(err);
+      })
+      .then((receipt) => {
+        setLoading(false);
+        console.log(receipt);
+        dispatch(fetchData(blockchain.account));
+      });
+  };
+
+  const mintToolNFT = (_account) => {
+    setLoading(true);
+    blockchain.lipToken.methods
+      .createRandomTool()
+      .send({
+        from: _account,
+        value: blockchain.web3.utils.toWei("0.001", "ether"),
       })
       .once("error", (err) => {
         setLoading(false);
@@ -61,10 +109,11 @@ function App() {
   }, [blockchain.lipToken]);
 
   return (
-    <s.Screen image={_color}>
+    <s.Screen image={_bgI}>
+      <NavBar/>
       {blockchain.account === "" || blockchain.lipToken === null ? (
-        <s.Container flex={1} ai={"center"} jc={"center"}>
-          <s.TextTitle>Connect to the game</s.TextTitle>
+        <s.Container flex={1} ai={"center"} jc={"center"} style={{marginTop:"-1500px" }}>
+          <s.TextTitle >Connect to the game</s.TextTitle>
           <s.SpacerSmall />
           <button
             onClick={(e) => {
@@ -90,14 +139,34 @@ function App() {
               mintNFT(blockchain.account, "Unknown");
             }}
           >
-            CREATE NFT LIP
+            BUY NFT SEED
           </button>
+          <button
+            disabled={loading ? 1 : 0}
+            onClick={(e) => {
+              e.preventDefault();
+              mintToolNFT(blockchain.account);
+            }}
+          >
+            BUY NFT TOOL
+          </button>
+          <span>{data.allTools}</span>
+          <span>{data.allOwnerTools}</span>
+         
+          <Dropdown/>
+  
+          <s.TextDescription>Number Of NFTs: {data.allOwnerLips.length}</s.TextDescription>
+          {/* <s.TextDescription>Number Of Tools: {}</s.TextDescription> */}
           <s.SpacerMedium />
           <s.Container jc={"center"} fd={"row"} style={{ flexWrap: "wrap" }}>
             {data.allLips.map((item, index) => {
               return (
                 <s.Container key={index} style={{ padding: "15px" }}>
-                  <LipRenderer lip={item} />
+                  {/* rendering the nft images */}
+                 
+                  <LipRenderer lip={item}/>
+                  {/* <Modal/> */}
+                
                   <s.SpacerXSmall />
                   <s.Container>
                     <s.TextDescription>ID: {item.id}</s.TextDescription>
@@ -122,8 +191,12 @@ function App() {
           </s.Container>
         </s.Container>
       )}
+    <Footer/>
     </s.Screen>
+    
   );
 }
+
+
 
 export default App;

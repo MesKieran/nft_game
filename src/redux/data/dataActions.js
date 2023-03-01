@@ -33,11 +33,22 @@ export const fetchData = (account) => {
         .getState()
         .blockchain.lipToken.methods.getOwnerLips(account)
         .call();
+      let allTools = await store
+        .getState()
+        .blockchain.lipToken.methods.getTools()
+        .call();
+      let allOwnerTools = await store
+        .getState()
+        .blockchain.lipToken.methods.getOwnerTools(account)
+        .call();
+      
 
       dispatch(
         fetchDataSuccess({
           allLips,
           allOwnerLips,
+          allTools,
+          allOwnerTools,
         })
       );
     } catch (err) {
