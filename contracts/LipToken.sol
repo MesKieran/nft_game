@@ -13,10 +13,8 @@ contract LipToken is ERC721, Ownable {
   uint256 COUNTER;
   uint256 AlreadyUsed = 0;
 
-  uint256 fee = 0 ether;
-  uint256 toolFee =  0 ether;
-  // uint256 fee = 0.01 ether;
-  // uint256 toolFee =  0.001 ether;
+  uint256 fee = 0.01 ether;
+  uint256 toolFee =  0.001 ether;
   
 
   string[] public toolType;
@@ -128,11 +126,26 @@ contract LipToken is ERC721, Ownable {
     require(ownerOf(_toolId) == msg.sender, "Tool does not belong to sender");
     require(ownerOf(_lipId) == msg.sender, "Lip does not belong to sender");
     Lip storage lip = lips[tokenIdToLevel];
-    require(lip.ableToLevel < 3, "Max ableToLevel reached");
+    // require(lip.ableToLevel < 3, "Max ableToLevel reached");
 
-    Tool memory tool = tools[tokenIdToUse];
-    require(keccak256(bytes(tool.typeOfTool)) == keccak256(bytes("scissor")), "Tool must be of type 'scissor'");
+    // Tool memory tool = tools[tokenIdToUse];
+    // require(keccak256(bytes(tool.typeOfTool)) == keccak256(bytes("scissor")), "Tool must be of type 'scissor'");
 
+    if(lip.rarity<=20){
+      require(lip.ableToLevel == 10, "Lip is not ready to level up yet");
+    }
+    if(lip.rarity>20 && lip.rarity<=40){
+      require(lip.ableToLevel < 8, "Max ableToLevel reached");
+    }
+    if(lip.rarity>40 && lip.rarity<=60){
+      require(lip.ableToLevel < 6, "Max ableToLevel reached");
+    }
+    if(lip.rarity>60 && lip.rarity<=80){
+      require(lip.ableToLevel < 4, "Max ableToLevel reached");
+    }
+    if(lip.rarity>80 && lip.rarity<=100){
+      require(lip.ableToLevel < 3, "Max ableToLevel reached");
+    }
     AlreadyUsed++;
     lip.ableToLevel++;
     _burn(_toolId);
@@ -186,7 +199,26 @@ contract LipToken is ERC721, Ownable {
   function levelUp(uint256 _lipId) public {
     require(ownerOf(_lipId) == msg.sender);
     Lip storage lip = lips[_lipId];
-    require(lip.ableToLevel == 3, "Lip is not ready to level up yet");
+    if(lip.rarity<=20){
+      require(lip.ableToLevel == 10, "Lip is not ready to level up yet");
+     
+    }
+    if(lip.rarity>20 && lip.rarity<=40){
+      require(lip.ableToLevel == 8, "Lip is not ready to level up yet");
+     
+    }
+    if(lip.rarity>40 && lip.rarity<=60){
+      require(lip.ableToLevel == 6, "Lip is not ready to level up yet");
+      
+    }
+    if(lip.rarity>60 && lip.rarity<=80){
+      require(lip.ableToLevel == 4, "Lip is not ready to level up yet");
+      
+    }
+    if(lip.rarity>80 && lip.rarity<=100){
+      require(lip.ableToLevel == 3, "Lip is not ready to level up yet");
+      
+    }
     lip.level++;
     lip.ableToLevel = 0;
   }

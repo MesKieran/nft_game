@@ -43,6 +43,8 @@ function Dropdown(){
     const blockchain = useSelector((state) => state.blockchain);
     const data = useSelector((state) => state.data);
     const [loading, setLoading] = useState(false);
+    const [seedNft, setSeedNft] = useState('');
+    const [toolNft, setToolNft] = useState('');
 
     console.log(data);
     console.log(blockchain.account);
@@ -114,6 +116,17 @@ function Dropdown(){
     
 
     }
+
+    //UseTool function
+
+    function handleSeedNftChange(event){
+      setSeedNft(event.target.value);
+    }
+
+    function handleToolNftChange(event){
+      setToolNft(event.target.value);
+    }
+
     
     return(
         <div>
@@ -143,18 +156,30 @@ function Dropdown(){
                          
                 </ul>
                 <ul>
-                    
-                    <li className="dropdownItem">
+                  <li className="dropdownItem">
+                    <form>
+                        <label>
+                          SeedId:
+                          <input style={{width:"50px"}} type="number" value={seedNft} onChange={handleSeedNftChange}/>
+                        </label>
+                        <label>
+                          SeedId:
+                          <input style={{width:"50px"}} type="number" value={toolNft} onChange={handleToolNftChange}/>
+                        </label>
                         <button
+                        type="submit"
                         disabled={loading ? 1 : 0}
                         onClick={(e) => {
                         e.preventDefault();
-                        useTool(blockchain.account, 0, 10);
+                        parseInt(seedNft);
+                        parseInt(toolNft)
+                        useTool(blockchain.account, seedNft, toolNft);
                         }}
                         >
                         useTool
                         </button>
-                        <img src={Backpack}></img>
+                        
+                    </form>
                     </li>
                          
                 </ul>

@@ -160,6 +160,22 @@ function App() {
           <s.SpacerMedium />
           <s.Container jc={"center"} fd={"row"} style={{ flexWrap: "wrap" }}>
             {data.allLips.map((item, index) => {
+              let experienceNeeded = 0;
+              if(item.rarity<=20){
+                experienceNeeded = 10;
+              }
+              if(item.rarity>20 && item.rarity<=40){
+                experienceNeeded = 8;
+              }
+              if(item.rarity>40 && item.rarity<=60){
+                experienceNeeded = 6;
+              }
+              if(item.rarity>60 && item.rarity<=80){
+                experienceNeeded = 4;
+              }
+              if(item.rarity>80 && item.rarity<=100){
+                experienceNeeded = 3;
+              }
               return (
                 <s.Container key={index} style={{ padding: "15px" }}>
                   {/* rendering the nft images */}
@@ -174,6 +190,7 @@ function App() {
                     <s.TextDescription>LEVEL: {item.level}</s.TextDescription>
                     <s.TextDescription>NAME: {item.name}</s.TextDescription>
                     <s.TextDescription>RARITY: {item.rarity}</s.TextDescription>
+                    <s.TextDescription>Experience: {item.ableToLevel} "Need  <s.TextDescription style={{color:"red"}}>{experienceNeeded}</s.TextDescription> experience to Level"</s.TextDescription>
                     <s.SpacerXSmall />
                     <button
                       disabled={loading ? 1 : 0}
