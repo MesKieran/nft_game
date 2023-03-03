@@ -109,7 +109,8 @@ function App() {
   }, [blockchain.lipToken]);
 
   let NFTTypeArray = ["Aloe Vera Seed", "Banyan Tree Seed", "Orange Seed", "Peach Seed", "Apple Seed", "Bamboo Seed",
-  "Aloe Vera Bud", "Banyan Tree Bud", "Orange Bud", "Peach Bud", "Apple Bud", "Bamboo Bud"]
+  "Aloe Vera Bud", "Banyan Tree Bud", "Orange Bud", "Peach Bud", "Apple Bud", "Bamboo Bud",
+  "Aloe Vera", "Banyan Tree", "Orange Tree", "Peach Tree", "Apple Tree", "Bamboo Tree"]
 
   return (
     <s.Screen image={_bgI}>

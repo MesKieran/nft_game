@@ -163,7 +163,7 @@ function Dropdown(){
                           <input style={{width:"50px"}} type="number" value={seedNft} onChange={handleSeedNftChange}/>
                         </label>
                         <label>
-                          SeedId:
+                          ToolId:
                           <input style={{width:"50px"}} type="number" value={toolNft} onChange={handleToolNftChange}/>
                         </label>
                         <button
