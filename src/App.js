@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
-import LipRenderer from "./components/lipRenderer";
+import NFTRenderer from "./components/NFTRenderer";
 import _bgI from "./assets/images/bg/backgrounImg.png";
 import Footer from './Webpage component/Footer';
 import NavBar from "./Webpage component/Navbar";
@@ -108,11 +108,14 @@ function App() {
     }
   }, [blockchain.lipToken]);
 
+  let NFTTypeArray = ["Aloe Vera Seed", "Banyan Tree Seed", "Orange Seed", "Peach Seed", "Apple Seed", "Bamboo Seed",
+  "Aloe Vera Bud", "Banyan Tree Bud", "Orange Bud", "Peach Bud", "Apple Bud", "Bamboo Bud"]
+
   return (
     <s.Screen image={_bgI}>
       <NavBar/>
       {blockchain.account === "" || blockchain.lipToken === null ? (
-        <s.Container flex={1} ai={"center"} jc={"center"} style={{marginTop:"-1500px" }}>
+        <s.Container flex={1} ai={"center"} jc={"center"} style={{marginTop:"-200px" }}>
           <s.TextTitle >Connect to the game</s.TextTitle>
           <s.SpacerSmall />
           <button
@@ -176,11 +179,12 @@ function App() {
               if(item.rarity>80 && item.rarity<=100){
                 experienceNeeded = 3;
               }
+              let NFTType = item.dna.substring(4, 6) % 6 + (item.level-1)*6;
               return (
-                <s.Container key={index} style={{ padding: "15px" }}>
+                <s.Container key={index} style={{ padding: "15px"}}>
                   {/* rendering the nft images */}
-                 
-                  <LipRenderer lip={item}/>
+                  
+                  <NFTRenderer lip={item} PassType={NFTType}/>
                   {/* <Modal/> */}
                 
                   <s.SpacerXSmall />
@@ -188,7 +192,7 @@ function App() {
                     <s.TextDescription>ID: {item.id}</s.TextDescription>
                     <s.TextDescription>DNA: {item.dna}</s.TextDescription>
                     <s.TextDescription>LEVEL: {item.level}</s.TextDescription>
-                    <s.TextDescription>NAME: {item.name}</s.TextDescription>
+                    <s.TextDescription>NAME: {NFTTypeArray[NFTType]}</s.TextDescription>
                     <s.TextDescription>RARITY: {item.rarity}</s.TextDescription>
                     <s.TextDescription>Experience: {item.ableToLevel} "Need  <s.TextDescription style={{color:"red"}}>{experienceNeeded}</s.TextDescription> experience to Level"</s.TextDescription>
                     <s.SpacerXSmall />

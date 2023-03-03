@@ -4,12 +4,13 @@ import { parts } from "../parts/parts";
 import _r1 from "../assets/images/rarity/_rarity_1.png";
 import _r2 from "../assets/images/rarity/_rarity_2.png";
 import _r3 from "../assets/images/rarity/_rarity_3.png";
+import * as s from "../styles/globalStyles";
 
 
 
 
 
-const LipRenderer = ({ lip = null, size = 200, style }) => {
+const NFTRenderer = ({ lip = null, size = 250, style, PassType }) => {
   if (!lip) {
     return null;
   }
@@ -25,17 +26,18 @@ const LipRenderer = ({ lip = null, size = 200, style }) => {
   let dnaStr = String(lip.dna);
 
   while (dnaStr.length < 16) dnaStr = "0" + dnaStr;
-
-  let lipDeatils = {
-    bg: dnaStr.substring(0, 2) % 5,
+  let lipDeatils={
+    bg: dnaStr.substring(0, 2) % 6 ,
     mask: dnaStr.substring(2, 4) % 5,
-    line: dnaStr.substring(4, 6) % 5,
+    line: PassType,
     addon: dnaStr.substring(6, 8) % 5,
     addonMouth1: dnaStr.substring(8, 10) % 5,
     addonMouth2: dnaStr.substring(10, 12) % 5,
     addonMouth3: dnaStr.substring(12, 14) % 5,
     name: lip.name,
-  };
+  }
+ 
+  
 
   const lipStyle = {
     width: "100%",
@@ -75,8 +77,9 @@ const LipRenderer = ({ lip = null, size = 200, style }) => {
       />
       <img alt={"rarity"} src={rarity} style={lipStyle} />
     </div>
+    
    
   );
 };
 
-export default LipRenderer;
+export default NFTRenderer;

@@ -1,4 +1,5 @@
 // parts
+import b_0 from "../assets/images/parts/b/0.png";
 import b_1 from "../assets/images/parts/b/1.png";
 import b_2 from "../assets/images/parts/b/2.png";
 import b_3 from "../assets/images/parts/b/3.png";
@@ -11,11 +12,19 @@ import m_3 from "../assets/images/parts/m/3.png";
 import m_4 from "../assets/images/parts/m/4.png";
 import m_5 from "../assets/images/parts/m/5.png";
 
+import l_0 from "../assets/images/parts/l/0.png";
 import l_1 from "../assets/images/parts/l/1.png";
 import l_2 from "../assets/images/parts/l/2.png";
 import l_3 from "../assets/images/parts/l/3.png";
 import l_4 from "../assets/images/parts/l/4.png";
 import l_5 from "../assets/images/parts/l/5.png";
+import l_6 from "../assets/images/parts/l/6.png";
+import l_7 from "../assets/images/parts/l/7.png";
+import l_8 from "../assets/images/parts/l/8.png";
+import l_9 from "../assets/images/parts/l/9.png";
+import l_10 from "../assets/images/parts/l/10.png";
+import l_11 from "../assets/images/parts/l/11.png";
+
 
 import ad_1 from "../assets/images/parts/ad/1.png";
 import ad_2 from "../assets/images/parts/ad/2.png";
@@ -47,9 +56,9 @@ import fertilizer from "../assets/images/tool/3.png"
 
 
 export const parts = {
-  bg: [b_1, b_2, b_3, b_4, b_5],
+  bg: [b_0, b_1, b_2, b_3, b_4, b_5],
   mask: [m_1, m_2, m_3, m_4, m_5],
-  line: [l_1, l_2, l_3, l_4, l_5],
+  line: [l_0, l_1, l_2, l_3, l_4, l_5, l_6, l_7, l_8, l_9, l_10, l_11],
   addon: [ad_1, ad_2, ad_3, ad_4, ad_5],
   addonMouth1: [am1_1, am1_2, am1_3, am1_4, am1_5],
   addonMouth2: [am2_1, am2_2, am2_3, am2_4, am2_5],
