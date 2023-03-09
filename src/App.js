@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import AppleImg from "./assets/images/Popups/apple.webp"
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
@@ -12,6 +11,16 @@ import NavBar from "./Webpage component/Navbar";
 import Dropdown from "./Webpage component/DropDown";
 import Popup from "./Webpage component/Popup";
 import './styles/Popup.css'
+
+import AppleImg from "./assets/images/Popups/apple.webp";
+import OrangeImg from "./assets/images/Popups/orange.jpg";
+import PeachImg from "./assets/images/Popups/peach.webp";
+import AloeImg from "./assets/images/Popups/Aloe.jpg";
+import BanyanImg from "./assets/images/Popups/banyan.webp";
+import BambooImg from "./assets/images/Popups/bamboo.jpg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+
 
 
 
@@ -211,6 +220,9 @@ function App() {
             <div class="plant-description">
               <h2>Apple Tree</h2>
               <div style={{display:"flex"}}>
+              <p>Rating: <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /></p>
+              </div>
+              <div style={{display:"flex"}}>
               <p>Production emissions</p><p onMouseOver={handleMouseOverProduction}
                 onMouseOut={handleMouseOutProduction} style={{color:"red"}}>(?)</p> <p>: 0.41KG CO2 / KG of Apple</p>
                 {isHoveringProduction && <div className="Description_Detail"><p>This includes emissions from the cultivation of the plant, such as fertilizers and pesticides, as well as emissions from transportation, packaging, and processing.</p></div>}
@@ -222,7 +234,7 @@ function App() {
               </div>
               <div style={{display:"flex"}}>
               <p>Carbon absorption</p><p onMouseOver={handleMouseOverCarbon}
-                onMouseOut={handleMouseOutCarbon} style={{color:"red"}}>(?)</p> <p>: 49 KG CO2 / year</p>
+                onMouseOut={handleMouseOutCarbon} style={{color:"red"}}>(?)</p> <p>: 49 KG CO2 / year / tree (14.7 tons / acre)</p>
                 {isHoveringCarbon && <p className="Description_Detail">The amount of carbon that the plant absorbs during its growth, including both above-ground biomass and below-ground root systems.</p>}
               </div>
               <div style={{display:"flex"}}>
@@ -246,24 +258,214 @@ function App() {
 
           
           <Popup trigger={OrangebuttonPopup} setTrigger={setOrangeButtonPopup}>
-            <h3>Orange</h3>
+          <div class="plant-container">
+            <img src={OrangeImg} alt="Plant Image" class="plant-image"/>
+            <div class="plant-description">
+              <h2>Orange Tree</h2>
+              <div style={{display:"flex"}}>
+              <p>Rating:  <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /></p>
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Production emissions</p><p onMouseOver={handleMouseOverProduction}
+                onMouseOut={handleMouseOutProduction} style={{color:"red"}}>(?)</p> <p>: 0.51KG CO2 / KG of Orange</p>
+                {isHoveringProduction && <div className="Description_Detail"><p>This includes emissions from the cultivation of the plant, such as fertilizers and pesticides, as well as emissions from transportation, packaging, and processing.</p></div>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Land use</p><p onMouseOver={handleMouseOverLandUse}
+                onMouseOut={handleMouseOutLandUse} style={{color:"red"}}>(?)</p> <p>: 100 and 150 trees per acre</p>
+                {isHoveringLandUse && <p className="Description_Detail">The amount of land required to produce the plant, as well as any land use changes associated with its production.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Carbon absorption</p><p onMouseOver={handleMouseOverCarbon}
+                onMouseOut={handleMouseOutCarbon} style={{color:"red"}}>(?)</p> <p>: 21 KG CO2 / year / tree (3.15 tonnes / acre)</p>
+                {isHoveringCarbon && <p className="Description_Detail">The amount of carbon that the plant absorbs during its growth, including both above-ground biomass and below-ground root systems.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Harvesting emissions</p><p onMouseOver={handleMouseOverHavest}
+                onMouseOut={handleMouseOutHavest} style={{color:"red"}}>(?)</p> <p>: 0.21 KG CO2 / liter of product.</p>
+                {isHoveringHavest && <p className="Description_Detail">The emissions associated with harvesting and processing the plant, such as fuel used in machinery and equipment.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Waste emissions</p><p onMouseOver={handleMouseOverWaste}
+                onMouseOut={handleMouseOutWaste} style={{color:"red"}}>(?)</p> <p>: The emissions associated with the disposal of orange trees can vary depending on the specific disposal method used. For example, burning orange wood can release carbon emissions into the atmosphere, while composting can sequester carbon in the soil.</p>
+                {isHoveringWaste && <p className="Description_Detail">The emissions associated with the disposal of the plant, including any decomposition or incineration.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Timeframe</p><p onMouseOver={handleMouseOverTime}
+                onMouseOut={handleMouseOutTime} style={{color:"red"}}>(?)</p> <p>: The timeframe over which an orange tree's carbon footprint is being assessed can vary depending on the specific research question.</p>
+                {isHoveringTime && <p className="Description_Detail">The timeframe over which the plant's carbon footprint is being assessed, such as annual emissions or over the entire lifespan of the plant.</p>}
+              </div>
+            </div>
+          </div>
           </Popup>
 
           <Popup trigger={BamboobuttonPopup} setTrigger={setBambooButtonPopup}>
-            <h3>Bamboo</h3>
+          <div class="plant-container">
+            <img src={BambooImg} alt="Plant Image" class="plant-image"/>
+            <div class="plant-description">
+              <h2>Bamboo</h2>
+              <div style={{display:"flex"}}>
+              <p>Rating: <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /></p>
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Production emissions</p><p onMouseOver={handleMouseOverProduction}
+                onMouseOut={handleMouseOutProduction} style={{color:"red"}}>(?)</p> <p>: 1.1KG CO2 / square meter of bamboo</p>
+                {isHoveringProduction && <div className="Description_Detail"><p>This includes emissions from the cultivation of the plant, such as fertilizers and pesticides, as well as emissions from transportation, packaging, and processing.</p></div>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Land use</p><p onMouseOver={handleMouseOverLandUse}
+                onMouseOut={handleMouseOutLandUse} style={{color:"red"}}>(?)</p> <p>: According to the World Bamboo Organization, bamboo can yield up to 20 times more timber per hectare compared to other trees.</p>
+                {isHoveringLandUse && <p className="Description_Detail">The amount of land required to produce the plant, as well as any land use changes associated with its production.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Carbon absorption</p><p onMouseOver={handleMouseOverCarbon}
+                onMouseOut={handleMouseOutCarbon} style={{color:"red"}}>(?)</p> <p>: 70 tonnes / hectare (28 tonnes / acre)</p>
+                {isHoveringCarbon && <p className="Description_Detail">The amount of carbon that the plant absorbs during its growth, including both above-ground biomass and below-ground root systems.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Harvesting emissions</p><p onMouseOver={handleMouseOverHavest}
+                onMouseOut={handleMouseOutHavest} style={{color:"red"}}>(?)</p> <p>: Compared to other materials such as wood or steel, bamboo requires less energy to process due to its natural strength and flexibility.</p>
+                {isHoveringHavest && <p className="Description_Detail">The emissions associated with harvesting and processing the plant, such as fuel used in machinery and equipment.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Waste emissions</p><p onMouseOver={handleMouseOverWaste}
+                onMouseOut={handleMouseOutWaste} style={{color:"red"}}>(?)</p> <p>: Bamboo is biodegradable, and therefore the emissions associated with its disposal are minimal. Additionally, bamboo can be composted, which can help sequester carbon in the soil.</p>
+                {isHoveringWaste && <p className="Description_Detail">The emissions associated with the disposal of the plant, including any decomposition or incineration.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Timeframe</p><p onMouseOver={handleMouseOverTime}
+                onMouseOut={handleMouseOutTime} style={{color:"red"}}>(?)</p> <p>: The timeframe over which a bamboo product's carbon footprint is being assessed can vary depending on the specific research question.</p>
+                {isHoveringTime && <p className="Description_Detail">The timeframe over which the plant's carbon footprint is being assessed, such as annual emissions or over the entire lifespan of the plant.</p>}
+              </div>
+            </div>
+          </div>
           </Popup>
 
           <Popup trigger={PeachbuttonPopup} setTrigger={setPeachButtonPopup}>
-            <h3>Peach</h3>
+          <div class="plant-container">
+            <img src={PeachImg} alt="Plant Image" class="plant-image"/>
+            <div class="plant-description">
+              <h2>Peach Tree</h2>
+              <div style={{display:"flex"}}>
+              <p>Rating: <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /></p>
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Production emissions</p><p onMouseOver={handleMouseOverProduction}
+                onMouseOut={handleMouseOutProduction} style={{color:"red"}}>(?)</p> <p>: 0.32KG CO2 / KG of Peach</p>
+                {isHoveringProduction && <div className="Description_Detail"><p>This includes emissions from the cultivation of the plant, such as fertilizers and pesticides, as well as emissions from transportation, packaging, and processing.</p></div>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Land use</p><p onMouseOver={handleMouseOverLandUse}
+                onMouseOut={handleMouseOutLandUse} style={{color:"red"}}>(?)</p> <p>: 75 and 200 trees per acre</p>
+                {isHoveringLandUse && <p className="Description_Detail">The amount of land required to produce the plant, as well as any land use changes associated with its production.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Carbon absorption</p><p onMouseOver={handleMouseOverCarbon}
+                onMouseOut={handleMouseOutCarbon} style={{color:"red"}}>(?)</p> <p>: 50 KG / tree / year (10 tonnes per acre)</p>
+                {isHoveringCarbon && <p className="Description_Detail">The amount of carbon that the plant absorbs during its growth, including both above-ground biomass and below-ground root systems.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Harvesting emissions</p><p onMouseOver={handleMouseOverHavest}
+                onMouseOut={handleMouseOutHavest} style={{color:"red"}}>(?)</p> <p>: 0.17 KG CO2 / liter of product.</p>
+                {isHoveringHavest && <p className="Description_Detail">The emissions associated with harvesting and processing the plant, such as fuel used in machinery and equipment.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Waste emissions</p><p onMouseOver={handleMouseOverWaste}
+                onMouseOut={handleMouseOutWaste} style={{color:"red"}}>(?)</p> <p>: The emissions associated with the disposal of peach trees can vary depending on the specific disposal method used. For example, burning peach wood can release carbon emissions into the atmosphere, while composting can sequester carbon in the soil. However, specific statistics on the emissions associated with peach tree disposal are not widely available.</p>
+                {isHoveringWaste && <p className="Description_Detail">The emissions associated with the disposal of the plant, including any decomposition or incineration.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Timeframe</p><p onMouseOver={handleMouseOverTime}
+                onMouseOut={handleMouseOutTime} style={{color:"red"}}>(?)</p> <p>: The timeframe over which a peach tree's carbon footprint is being assessed can vary depending on the specific research question.</p>
+                {isHoveringTime && <p className="Description_Detail">The timeframe over which the plant's carbon footprint is being assessed, such as annual emissions or over the entire lifespan of the plant.</p>}
+              </div>
+            </div>
+          </div>
           </Popup>
 
           <Popup trigger={AloebuttonPopup} setTrigger={setAloeButtonPopup}>
-            <h3>Aloe Vera</h3>
+          <div class="plant-container">
+            <img src={AloeImg} alt="Plant Image" class="plant-image"/>
+            <div class="plant-description">
+              <h2>Aloe Vera</h2>
+              <div style={{display:"flex"}}>
+              <p>Rating: <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /></p>
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Production emissions</p><p onMouseOver={handleMouseOverProduction}
+                onMouseOut={handleMouseOutProduction} style={{color:"red"}}>(?)</p> <p>: 0.54KG CO2 / KG of Aloe Vera</p>
+                {isHoveringProduction && <div className="Description_Detail"><p>This includes emissions from the cultivation of the plant, such as fertilizers and pesticides, as well as emissions from transportation, packaging, and processing.</p></div>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Land use</p><p onMouseOver={handleMouseOverLandUse}
+                onMouseOut={handleMouseOutLandUse} style={{color:"red"}}>(?)</p> <p>: 12.14 tonnes per acre (10890 per acre assuming spacing 2 feet)</p>
+                {isHoveringLandUse && <p className="Description_Detail">The amount of land required to produce the plant, as well as any land use changes associated with its production.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Carbon absorption</p><p onMouseOver={handleMouseOverCarbon}
+                onMouseOut={handleMouseOutCarbon} style={{color:"red"}}>(?)</p> <p>: a few pounds of carbon dioxide / year (assume 3 pounds) (14.81 tonnes per acre)</p>
+                {isHoveringCarbon && <p className="Description_Detail">The amount of carbon that the plant absorbs during its growth, including both above-ground biomass and below-ground root systems.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Harvesting emissions</p><p onMouseOver={handleMouseOverHavest}
+                onMouseOut={handleMouseOutHavest} style={{color:"red"}}>(?)</p> <p>: 0.29 KG CO2 / liter of product.</p>
+                {isHoveringHavest && <p className="Description_Detail">The emissions associated with harvesting and processing the plant, such as fuel used in machinery and equipment.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Waste emissions</p><p onMouseOver={handleMouseOverWaste}
+                onMouseOut={handleMouseOutWaste} style={{color:"red"}}>(?)</p> <p>: The emissions associated with the disposal of Aloe vera leaves can vary depending on the specific disposal method used. For example, composting Aloe vera leaves can help sequester carbon in the soil. However, specific statistics on the emissions associated with Aloe vera leaf disposal are not widely available.</p>
+                {isHoveringWaste && <p className="Description_Detail">The emissions associated with the disposal of the plant, including any decomposition or incineration.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Timeframe</p><p onMouseOver={handleMouseOverTime}
+                onMouseOut={handleMouseOutTime} style={{color:"red"}}>(?)</p> <p>: The timeframe over which Aloe vera's carbon footprint is being assessed can vary depending on the specific research question.</p>
+                {isHoveringTime && <p className="Description_Detail">The timeframe over which the plant's carbon footprint is being assessed, such as annual emissions or over the entire lifespan of the plant.</p>}
+              </div>
+            </div>
+          </div>
           </Popup>
 
 
           <Popup trigger={BanyanbuttonPopup} setTrigger={setBanyanButtonPopup}>
-            <h3>Banyan</h3>
+          <div class="plant-container">
+            <img src={BanyanImg} alt="Plant Image" class="plant-image"/>
+            <div class="plant-description">
+              <h2>Banyan Tree</h2>
+              <div style={{display:"flex"}}>
+              <p>Rating: <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /> <FontAwesomeIcon icon={faStar} /></p>
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Production emissions</p><p onMouseOver={handleMouseOverProduction}
+                onMouseOut={handleMouseOutProduction} style={{color:"red"}}>(?)</p> <p>: The carbon emissions associated with Banyan tree production are minimal as Banyan trees grow in the wild without any human intervention.</p>
+                {isHoveringProduction && <div className="Description_Detail"><p>This includes emissions from the cultivation of the plant, such as fertilizers and pesticides, as well as emissions from transportation, packaging, and processing.</p></div>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Land use</p><p onMouseOver={handleMouseOverLandUse}
+                onMouseOut={handleMouseOutLandUse} style={{color:"red"}}>(?)</p> <p>: 60 trees per acre (assume spacing is 50 feet)</p>
+                {isHoveringLandUse && <p className="Description_Detail">The amount of land required to produce the plant, as well as any land use changes associated with its production.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Carbon absorption</p><p onMouseOver={handleMouseOverCarbon}
+                onMouseOut={handleMouseOutCarbon} style={{color:"red"}}>(?)</p> <p>:  190 KG / tree / year (assume full grown) (11.4 tonnes per acre)</p>
+                {isHoveringCarbon && <p className="Description_Detail">The amount of carbon that the plant absorbs during its growth, including both above-ground biomass and below-ground root systems.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Harvesting emissions</p><p onMouseOver={handleMouseOverHavest}
+                onMouseOut={handleMouseOutHavest} style={{color:"red"}}>(?)</p> <p>: Banyan trees are not harvested or processed for commercial purposes, so there are no carbon emissions associated with these activities.</p>
+                {isHoveringHavest && <p className="Description_Detail">The emissions associated with harvesting and processing the plant, such as fuel used in machinery and equipment.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Waste emissions</p><p onMouseOver={handleMouseOverWaste}
+                onMouseOut={handleMouseOutWaste} style={{color:"red"}}>(?)</p> <p>: The emissions associated with the disposal of Banyan tree waste, such as leaves and branches, can vary depending on the specific disposal method used. For example, composting Banyan tree waste can help sequester carbon in the soil. However, specific statistics on the emissions associated with Banyan tree waste disposal are not widely available.</p>
+                {isHoveringWaste && <p className="Description_Detail">The emissions associated with the disposal of the plant, including any decomposition or incineration.</p>}
+              </div>
+              <div style={{display:"flex"}}>
+              <p>Timeframe</p><p onMouseOver={handleMouseOverTime}
+                onMouseOut={handleMouseOutTime} style={{color:"red"}}>(?)</p> <p>: Timeframe: The timeframe over which a Banyan tree's carbon footprint is being assessed can vary depending on the specific research question. </p>
+                {isHoveringTime && <p className="Description_Detail">The timeframe over which the plant's carbon footprint is being assessed, such as annual emissions or over the entire lifespan of the plant.</p>}
+              </div>
+            </div>
+          </div>
           </Popup>
           
 
@@ -358,3 +560,5 @@ function App() {
 
 
 export default App;
+
+
