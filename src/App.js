@@ -36,26 +36,12 @@ function App() {
   const data = useSelector((state) => state.data);
   const [loading, setLoading] = useState(false);
 
-  console.log(data);
-  console.log(blockchain.account);
-
-  const getBalance = (_account) => {
-    setLoading(true);
-    blockchain.lipToken.methods
-      .balanceOf(_account)
-      .send({
-        from: _account,
-      })
-      .once("error", (err) => {
-        setLoading(false);
-        console.log(err);
-      })
-      .then((receipt) => {
-        setLoading(false);
-        console.log(receipt);
-        dispatch(fetchData(blockchain.account));
-      });
-  };
+  // console.log(data);
+  // console.log(blockchain.account);
+  // console.log("sdads");
+  // console.log(blockchain.lipToken);
+  // console.log(blockchain.reward);
+  
 
   const mintNFT = (_account, _name) => {
     setLoading(true);
@@ -113,8 +99,44 @@ function App() {
       });
   };
 
+  const getReward = (_account, _id) => {
+    setLoading(true);
+    blockchain.reward.methods
+      .claimRewards(_account,_id)
+      .send({
+        from: _account,
+      })
+      .once("error", (err) => {
+        setLoading(false);
+        console.log(err);
+      })
+      .then((receipt) => {
+        setLoading(false);
+        console.log(receipt);
+        dispatch(fetchData(blockchain.account));
+      });
+  };
+
+  const getRarity = (_account, _id) => {
+    setLoading(true);
+    blockchain.reward.methods
+      .getRarity(_id)
+      .send({
+        from: _account,
+      })
+      .once("error", (err) => {
+        setLoading(false);
+        console.log(err);
+      })
+      .then((receipt) => {
+        setLoading(false);
+        console.log(receipt);
+        dispatch(fetchData(blockchain.account));
+      });
+  };
+
   useEffect(() => {
-    if (blockchain.account != "" && blockchain.lipToken != null) {
+    if (blockchain.account != "" && blockchain.lipToken != null && blockchain.reward != null) {
       dispatch(fetchData(blockchain.account));
     }
   }, [blockchain.lipToken]);
@@ -492,8 +514,12 @@ function App() {
           >
             BUY NFT TOOL
           </button>
-          {/* <span>{data.allTools}</span>
-          <span>{data.allOwnerTools}</span> */}
+
+          {/* {console.log("sds"+data._allLips)}
+          {console.log("sd"+data.allOwnerLips)}
+          <span>{data._allLips}</span>
+          <span>{data.allOwnerLips}</span> */}
+          
           </div>
           <Dropdown/>
   
@@ -542,7 +568,17 @@ function App() {
                         levelUpLip(blockchain.account, item.id);
                       }}
                     >
+                    
                       Level Up
+                    </button>
+                    <button
+                      disabled={loading ? 1 : 0}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        getReward(blockchain.account,0);
+                      }}
+                    >
+                      GetReward
                     </button>
                   </s.Container>
                 </s.Container>

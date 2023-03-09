@@ -46,8 +46,6 @@ function Dropdown(){
     const [seedNft, setSeedNft] = useState('');
     const [toolNft, setToolNft] = useState('');
 
-    console.log(data);
-    console.log(blockchain.account);
 
     const useTool = (_account, _id, _toolId) => {
         setLoading(true);

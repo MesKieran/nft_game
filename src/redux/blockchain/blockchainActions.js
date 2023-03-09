@@ -1,6 +1,7 @@
 // constants
 import Web3 from "web3";
 import LipToken from "../../contracts/LipToken.json";
+import Reward from "../../contracts/Reward.json";
 // log
 import { fetchData } from "../data/dataActions";
 
@@ -45,19 +46,27 @@ export const connect = () => {
         });
         
         const lipTokenNetworkData = await LipToken.networks[networkId];
-        if (lipTokenNetworkData) {
+        const RewardNetworkData = await Reward.networks[networkId];
+        if (lipTokenNetworkData && RewardNetworkData) {
           
           const lipToken = new web3.eth.Contract(
             LipToken.abi,
             lipTokenNetworkData.address
           );
+          const reward = new web3.eth.Contract(
+            Reward.abi,
+            RewardNetworkData.address
+          );
           dispatch(
             connectSuccess({
               account: accounts[0],
+              reward: reward,
               lipToken: lipToken,
               web3: web3,
             })
           );
+         
+          
           // Add listeners start
           window.ethereum.on("accountsChanged", (accounts) => {
             dispatch(updateAccount(accounts[0]));
