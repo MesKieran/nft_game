@@ -50,6 +50,20 @@ export const Container = styled.div`
   background-position: center;
 `;
 
+export const Container_mainpage = styled.div`
+  display: flex;
+  flex: ${({ flex }) => (flex ? flex : 0)};
+  flex-direction: ${({ fd }) => (fd ? fd : "column")};
+  justify-content: ${({ jc }) => (jc ? jc : "flex-start")};
+  align-items: ${({ ai }) => (ai ? ai : "flex-start")};
+  background-color: ${({ test }) => (test ? "pink" : "none")};
+  width: 90%;
+  margin-bottom: 200px;
+  background-image: ${({ image }) => (image ? `url(${image})` : "none")};
+  background-size: cover;
+  background-position: center;
+`;
+
 export const TextTitle = styled.p`
   color: var(--white);
   font-size: 20px;

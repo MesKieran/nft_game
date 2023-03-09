@@ -135,6 +135,8 @@ function App() {
       });
   };
 
+  
+
   useEffect(() => {
     if (blockchain.account != "" && blockchain.lipToken != null && blockchain.reward != null) {
       dispatch(fetchData(blockchain.account));
@@ -200,7 +202,9 @@ function App() {
   const handleMouseOutTime = () => {
     setIsHoveringTime(false);
   };
-  
+
+
+
 
   return (
     <s.Screen image={_bgI}>
@@ -223,9 +227,9 @@ function App() {
           ) : null}
         </s.Container>
       ) : (
-        <s.Container ai={"center"} style={{ padding: "24px" }}>
+        <s.Container_mainpage ai={"center"} style={{ padding: "24px" }}>
           <s.TextTitle>Welcome to the game</s.TextTitle>
-
+         
           <div style={{display:"flex", padding:"10px"}}>
           <button onClick={()=>setAppleButtonPopup(true)}>Apple</button>
           <button style={{marginLeft:"30px"}} onClick={()=>setOrangeButtonPopup(true)}>Orange</button>
@@ -524,6 +528,8 @@ function App() {
           <Dropdown/>
   
           <s.TextDescription>Number Of NFTs: {data.allOwnerLips.length}</s.TextDescription>
+          <s.TextDescription>TST coin: {data.balanceOfTST}</s.TextDescription>
+          
           {/* <s.TextDescription>Number Of Tools: {}</s.TextDescription> */}
           <s.SpacerMedium />
           <s.Container jc={"center"} fd={"row"} style={{ flexWrap: "wrap" }}>
@@ -575,17 +581,29 @@ function App() {
                       disabled={loading ? 1 : 0}
                       onClick={(e) => {
                         e.preventDefault();
-                        getReward(blockchain.account,0);
+                        getReward(blockchain.account, item.id);
                       }}
                     >
                       GetReward
                     </button>
+                    {/* <button
+                      disabled={loading ? 1 : 0}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        console.log(WaitingTime(blockchain.account, item.id));
+                      }}
+                    >
+                      GetWaitingTime
+                    </button> */}
+                    <s.TextDescription>WaitingTime: 30s</s.TextDescription>
+                    
+
                   </s.Container>
                 </s.Container>
               );
             })}
           </s.Container>
-        </s.Container>
+        </s.Container_mainpage>
       )}
     <Footer/>
     </s.Screen>
