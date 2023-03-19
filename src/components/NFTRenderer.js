@@ -44,6 +44,12 @@ const NFTRenderer = ({ lip = null, size = 250, style, PassType }) => {
     height: "100%",
     position: "absolute",
   };
+  const lipStyleBackground = {
+    opacity:"0.6",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+  };
 
   return (
   
@@ -51,12 +57,12 @@ const NFTRenderer = ({ lip = null, size = 250, style, PassType }) => {
       style={{
         minWidth: size,
         minHeight: size,
-        background: "blue",
+        backgroundColor: "black",
         position: "relative",
         ...style,
       }}
     >
-      <img alt={"bg"} src={parts.bg[lipDeatils.bg]} style={lipStyle} />
+      <img alt={"bg"} src={parts.bg[lipDeatils.bg]} style={lipStyleBackground} />
       <img alt={"mask"} src={parts.mask[lipDeatils.mask]} style={lipStyle} />
       <img alt={"line"} src={parts.line[lipDeatils.line]} style={lipStyle} />
       <img alt={"addon"} src={parts.addon[lipDeatils.addon]} style={lipStyle} />
