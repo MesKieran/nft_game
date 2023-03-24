@@ -6,7 +6,8 @@ import NavImg from "../assets/images/navbar/navBarImg.jpeg"
 export const NavbarContainer = styled.nav`
   width: 100%;
   height: ${(props) => (props.extendNavbar ? "100vh" : "80px")};
-  background-image: url(${NavImg});
+  /* background-image: url(${NavImg}); */
+  background-color: white;
   display: flex;
   flex-direction: column;
   @media (min-width: 700px) {
@@ -39,8 +40,9 @@ export const NavbarLinkContainer = styled.div`
 `;
 
 export const NavbarLink = styled(Link)`
-  color: white;
+  color: #332C39;
   font-size: x-large;
+  font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
   margin: 10px;
@@ -50,7 +52,7 @@ export const NavbarLink = styled(Link)`
 `;
 
 export const NavbarLinkExtended = styled(Link)`
-  color: white;
+  color: #332C39;
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;

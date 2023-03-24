@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import Home from "./Home";
 import Contact from "../src/Webpage component/Contact";
+import About from "../src/Webpage component/About";
 import reportWebVitals from "./reportWebVitals";
 import store from "./redux/store";
 import { Provider } from "react-redux";
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "contact",
     element: <Contact/>
+  },
+  {
+    path: "about",
+    element: <About/>
   }
 ]);
 

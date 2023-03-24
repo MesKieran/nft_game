@@ -1,0 +1,36 @@
+
+.about-us {
+    background-color: #2C3333;
+    background-image: url("https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"); 
+    color: #fff;
+    padding: 50px 0;
+    height: 70vh;
+    padding-top: 200px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+  
+  .ForestImg {
+    max-width: 100%;
+    border: 5px solid #ccc;
+  }
+  
+  @media (max-width: 767px) {
+    h1 {
+      font-size: 28px;
+    }
+  
+    p {
+      font-size: 16px;
+    }
+  }

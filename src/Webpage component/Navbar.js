@@ -22,10 +22,10 @@ function Navbar(){
       <NavbarInnerContainer>
         <LeftContainer>
           <NavbarLinkContainer>
-            <NavbarLink to="/"> Home</NavbarLink>
-            <NavbarLink to="/game"> Game</NavbarLink>
-            <NavbarLink to="/contact"> Contact Us</NavbarLink>
-            <NavbarLink to="/about"> About Us</NavbarLink>
+            <NavbarLink to="/"> HOME</NavbarLink>
+            <NavbarLink to="/game"> GAME</NavbarLink>
+            <NavbarLink to="/contact"> CONTACT</NavbarLink>
+            <NavbarLink to="/about"> ABOUT</NavbarLink>
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar((curr) => !curr);
