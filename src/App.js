@@ -210,7 +210,7 @@ function App() {
     <s.Screen image={_bgI}>
       <NavBar/>
       {blockchain.account === "" || blockchain.lipToken === null ? (
-        <s.Container flex={1} ai={"center"} jc={"center"} style={{marginTop:"-200px" }}>
+        <s.Container flex={1} ai={"center"} jc={"center"} style={{marginTop:"0px" }}>
           <s.TextTitle >Connect to the game</s.TextTitle>
           <s.SpacerSmall />
           <button

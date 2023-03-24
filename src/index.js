@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Home from "./Home";
+import Contact from "../src/Webpage component/Contact";
 import reportWebVitals from "./reportWebVitals";
 import store from "./redux/store";
 import { Provider } from "react-redux";
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     path: "game",
     element: <App/>,
   },
+  {
+    path: "contact",
+    element: <Contact/>
+  }
 ]);
 
 ReactDOM.render(
