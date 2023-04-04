@@ -1,7 +1,7 @@
 const initialState = {
   loading: false,
   account: null,
-  lipToken: null,
+  plantNFT: null,
   reward: null,
   web3: null,
   errorMsg: "",
@@ -20,7 +20,7 @@ const blockchainReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         account: action.payload.account,
-        lipToken: action.payload.lipToken,
+        plantNFT: action.payload.plantNFT,
         reward: action.payload.reward,
         web3: action.payload.web3,
       };

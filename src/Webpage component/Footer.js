@@ -37,21 +37,15 @@ export default function Footer() {
             <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>
                 <MDBIcon icon="gem" className="me-3" />
-                Company name
+                TreesTogether
               </h6>
               <p>
-                Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit.
+                This is a blockchain porject that helps to increase awareness of carbon footprint using blockchain as a tool.
               </p>
             </MDBCol>
 
             <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>Products</h6>
-              <p>
-                <a href='#!' className='text-reset'>
-                  Angular
-                </a>
-              </p>
+              <h6 className='text-uppercase fw-bold mb-4'>Technology</h6>
               <p>
                 <a href='#!' className='text-reset'>
                   React
@@ -59,12 +53,17 @@ export default function Footer() {
               </p>
               <p>
                 <a href='#!' className='text-reset'>
-                  Vue
+                  Blockchain
                 </a>
               </p>
               <p>
                 <a href='#!' className='text-reset'>
-                  Laravel
+                  NFT
+                </a>
+              </p>
+              <p>
+                <a href='#!' className='text-reset'>
+                  Carbon Credits
                 </a>
               </p>
             </MDBCol>
@@ -72,23 +71,23 @@ export default function Footer() {
             <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
               <p>
-                <a href='#!' className='text-reset'>
-                  Pricing
+                <a href='https://github.com/MesKieran/nft_game' className='text-reset'>
+                  Github
                 </a>
               </p>
               <p>
-                <a href='#!' className='text-reset'>
-                  Settings
+                <a href='https://stepn.com/' className='text-reset'>
+                  Inspiration
                 </a>
               </p>
               <p>
-                <a href='#!' className='text-reset'>
-                  Orders
+                <a href='https://ethereum.org/en/whitepaper/' className='text-reset'>
+                  Etherium White Paper
                 </a>
               </p>
               <p>
-                <a href='#!' className='text-reset'>
-                  Help
+                <a href='https://ethereum.org/en/developers/docs/standards/tokens/erc-721/' className='text-reset'>
+                  NFT (ERC721)
                 </a>
               </p>
             </MDBCol>
@@ -97,17 +96,17 @@ export default function Footer() {
               <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
               <p>
                 <MDBIcon icon="home" className="me-2" />
-                New York, NY 10012, US
+                Singapore, Nanyang Technological University, School Of EEE
               </p>
               <p>
                 <MDBIcon icon="envelope" className="me-3" />
-                info@example.com
+                wuxiangyihui@gmail.com
               </p>
               <p>
-                <MDBIcon icon="phone" className="me-3" /> + 01 234 567 88
+                <MDBIcon icon="phone" className="me-3" /> + 65 90050685
               </p>
               <p>
-                <MDBIcon icon="print" className="me-3" /> + 01 234 567 89
+                <MDBIcon icon="print" className="me-3" /> + 65 90050685
               </p>
             </MDBCol>
           </MDBRow>

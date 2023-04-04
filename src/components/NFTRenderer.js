@@ -10,23 +10,23 @@ import * as s from "../styles/globalStyles";
 
 
 
-const NFTRenderer = ({ lip = null, size = 250, style, PassType }) => {
-  if (!lip) {
+const NFTRenderer = ({ plant = null, size = 250, style, PassType }) => {
+  if (!plant) {
     return null;
   }
   let rarity = _r1;
 
-  if (lip.rarity >= 50) {
+  if (plant.rarity >= 50) {
     rarity = _r2;
   }
-  if (lip.rarity >= 80) {
+  if (plant.rarity >= 80) {
     rarity = _r3;
   }
 
-  let dnaStr = String(lip.dna);
+  let dnaStr = String(plant.dna);
 
   while (dnaStr.length < 16) dnaStr = "0" + dnaStr;
-  let lipDeatils={
+  let plantDeatils={
     bg: dnaStr.substring(0, 2) % 6 ,
     mask: dnaStr.substring(2, 4) % 5,
     line: PassType,
@@ -34,15 +34,15 @@ const NFTRenderer = ({ lip = null, size = 250, style, PassType }) => {
     addonMouth1: dnaStr.substring(8, 10) % 5,
     addonMouth2: dnaStr.substring(10, 12) % 5,
     addonMouth3: dnaStr.substring(12, 14) % 5,
-    name: lip.name,
+    name: plant.name,
   }
 
-  const lipStyle = {
+  const plantStyle = {
     width: "100%",
     height: "100%",
     position: "absolute",
   };
-  const lipStyleBackground = {
+  const plantStyleBackground = {
     opacity:"0.6",
     width: "100%",
     height: "100%",
@@ -59,26 +59,26 @@ const NFTRenderer = ({ lip = null, size = 250, style, PassType }) => {
         ...style,
       }}
     >
-      <img alt={"bg"} src={parts.bg[lipDeatils.bg]} style={lipStyleBackground} />
-      <img alt={"mask"} src={parts.mask[lipDeatils.mask]} style={lipStyle} />
-      <img alt={"line"} src={parts.line[lipDeatils.line]} style={lipStyle} />
-      <img alt={"addon"} src={parts.addon[lipDeatils.addon]} style={lipStyle} />
+      <img alt={"bg"} src={parts.bg[plantDeatils.bg]} style={plantStyleBackground} />
+      <img alt={"mask"} src={parts.mask[plantDeatils.mask]} style={plantStyle} />
+      <img alt={"line"} src={parts.line[plantDeatils.line]} style={plantStyle} />
+      <img alt={"addon"} src={parts.addon[plantDeatils.addon]} style={plantStyle} />
       <img
         alt={"addon_mouth"}
-        src={parts.addonMouth1[lipDeatils.addonMouth1]}
-        style={lipStyle}
+        src={parts.addonMouth1[plantDeatils.addonMouth1]}
+        style={plantStyle}
       />
       <img
         alt={"addon_mouth"}
-        src={parts.addonMouth2[lipDeatils.addonMouth2]}
-        style={lipStyle}
+        src={parts.addonMouth2[plantDeatils.addonMouth2]}
+        style={plantStyle}
       />
       <img
         alt={"addon_mouth"}
-        src={parts.addonMouth3[lipDeatils.addonMouth3]}
-        style={lipStyle}
+        src={parts.addonMouth3[plantDeatils.addonMouth3]}
+        style={plantStyle}
       />
-      <img alt={"rarity"} src={rarity} style={lipStyle} />
+      <img alt={"rarity"} src={rarity} style={plantStyle} />
     </div>
   );
 };

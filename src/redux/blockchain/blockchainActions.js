@@ -1,6 +1,6 @@
 // constants
 import Web3 from "web3";
-import LipToken from "../../contracts/LipToken.json";
+import PlantNFT from "../../contracts/PlantNFT.json";
 import Reward from "../../contracts/Reward.json";
 // log
 import { fetchData } from "../data/dataActions";
@@ -44,12 +44,12 @@ export const connect = () => {
         const networkId = await window.ethereum.request({
           method: "net_version",
         });
-        const lipTokenNetworkData = await LipToken.networks[networkId];
+        const plantNFTNetworkData = await PlantNFT.networks[networkId];
         const RewardNetworkData = await Reward.networks[networkId];
-        if (lipTokenNetworkData && RewardNetworkData) {
-          const lipToken = new web3.eth.Contract(
-            LipToken.abi,
-            lipTokenNetworkData.address
+        if (plantNFTNetworkData && RewardNetworkData) {
+          const plantNFT = new web3.eth.Contract(
+            PlantNFT.abi,
+            plantNFTNetworkData.address
           );
           const reward = new web3.eth.Contract(
             Reward.abi,
@@ -59,7 +59,7 @@ export const connect = () => {
             connectSuccess({
               account: accounts[0],
               reward: reward,
-              lipToken: lipToken,
+              plantNFT: plantNFT,
               web3: web3,
             })
           );

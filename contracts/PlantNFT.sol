@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract LipToken is ERC721, Ownable {
+contract PlantNFT is ERC721, Ownable {
   constructor(string memory _name, string memory _symbol)
     ERC721(_name, _symbol)
   {}
@@ -24,7 +24,7 @@ contract LipToken is ERC721, Ownable {
     toolType.push("scissor");
   }
 
-  struct Lip {
+  struct Plant {
     string name;
     uint256 id;
     uint256 dna;
@@ -39,10 +39,10 @@ contract LipToken is ERC721, Ownable {
     uint8 rarity;
   }
 
-  Lip[] public lips;
+  Plant[] public plants;
   Tool[] public tools;
 
-  event NewLip(address indexed owner, uint256 id, uint256 dna);
+  event NewPlant(address indexed owner, uint256 id, uint256 dna);
   event NewTool(address indexed owner, uint256 id);
 
   // Helpers
@@ -63,19 +63,19 @@ contract LipToken is ERC721, Ownable {
   }
 
   // Creation of seeds
-  function _createLip(string memory _name) internal {
+  function _createPlant(string memory _name) internal {
     uint8 randRarity = uint8(_createRandomNum(100));
     uint256 randDna = _createRandomNum(10**16);
-    Lip memory newLip = Lip(_name, COUNTER, randDna, 1, randRarity, 0);
-    lips.push(newLip);
+    Plant memory newPlant = Plant(_name, COUNTER, randDna, 1, randRarity, 0);
+    plants.push(newPlant);
     _safeMint(msg.sender, COUNTER);
-    emit NewLip(msg.sender, COUNTER, randDna);
+    emit NewPlant(msg.sender, COUNTER, randDna);
     COUNTER++;
   }
 
-  function createRandomLip(string memory _name) public payable {
+  function createRandomPlant(string memory _name) public payable {
     require(msg.value >= fee);
-    _createLip(_name);
+    _createPlant(_name);
   }
 
   // Creation of tools
@@ -96,7 +96,7 @@ contract LipToken is ERC721, Ownable {
   }
 
   // UseTool
-  function useTool(address _owner, uint256 _lipId, uint256 _toolId) public {
+  function useTool(address _owner, uint256 _plantId, uint256 _toolId) public {
     uint256 tokenIdToUse = 0;
     uint256 counterT = 0;
     for (uint256 i = 0; i < tools.length; i++) {
@@ -112,42 +112,42 @@ contract LipToken is ERC721, Ownable {
     }
     uint256 tokenIdToLevel = 0;
     uint256 counterL = 0;
-    for (uint256 c = 0; c < lips.length; c++) {
+    for (uint256 c = 0; c < plants.length; c++) {
       if(!_exists(c)){
         continue;
       }
       if (ownerOf(c) == _owner) {
         counterL++;
       }
-      if(lips[c].id == _lipId){
+      if(plants[c].id == _plantId){
         tokenIdToLevel = c;
       }
     }
     require(ownerOf(_toolId) == msg.sender, "Tool does not belong to sender");
-    require(ownerOf(_lipId) == msg.sender, "Lip does not belong to sender");
-    Lip storage lip = lips[tokenIdToLevel];
+    require(ownerOf(_plantId) == msg.sender, "Plant does not belong to sender");
+    Plant storage plant = plants[tokenIdToLevel];
     // require(lip.ableToLevel < 3, "Max ableToLevel reached");
 
     // Tool memory tool = tools[tokenIdToUse];
     // require(keccak256(bytes(tool.typeOfTool)) == keccak256(bytes("scissor")), "Tool must be of type 'scissor'");
 
-    if(lip.rarity<=20){
-      require(lip.ableToLevel == 10, "Lip is not ready to level up yet");
+    if(plant.rarity<=20){
+      require(plant.ableToLevel == 10, "Plant is not ready to level up yet");
     }
-    if(lip.rarity>20 && lip.rarity<=40){
-      require(lip.ableToLevel < 8, "Max ableToLevel reached");
+    if(plant.rarity>20 && plant.rarity<=40){
+      require(plant.ableToLevel < 8, "Max ableToLevel reached");
     }
-    if(lip.rarity>40 && lip.rarity<=60){
-      require(lip.ableToLevel < 6, "Max ableToLevel reached");
+    if(plant.rarity>40 && plant.rarity<=60){
+      require(plant.ableToLevel < 6, "Max ableToLevel reached");
     }
-    if(lip.rarity>60 && lip.rarity<=80){
-      require(lip.ableToLevel < 4, "Max ableToLevel reached");
+    if(plant.rarity>60 && plant.rarity<=80){
+      require(plant.ableToLevel < 4, "Max ableToLevel reached");
     }
-    if(lip.rarity>80 && lip.rarity<=100){
-      require(lip.ableToLevel < 3, "Max ableToLevel reached");
+    if(plant.rarity>80 && plant.rarity<=100){
+      require(plant.ableToLevel < 3, "Max ableToLevel reached");
     }
     AlreadyUsed++;
-    lip.ableToLevel++;
+    plant.ableToLevel++;
     _burn(_toolId);
     
   }
@@ -157,20 +157,20 @@ contract LipToken is ERC721, Ownable {
 
 
   // Getters
-  function getLips() public view returns (Lip[] memory) {
-    return lips;
+  function getPlants() public view returns (Plant[] memory) {
+    return plants;
   }
 
   function getTools() public view returns (Tool[] memory) {
     return tools;
   }
 
-  function getOwnerLips(address _owner) public view returns (Lip[] memory) {
-    Lip[] memory result = new Lip[](lips.length);
+  function getOwnerPlants(address _owner) public view returns (Plant[] memory) {
+    Plant[] memory result = new Plant[](plants.length);
     uint256 counter = 0;
-    for (uint256 i = 0; i < lips.length; i++) {
+    for (uint256 i = 0; i < plants.length; i++) {
       if (ownerOf(i) == _owner) {
-        result[counter] = lips[i];
+        result[counter] = plants[i];
         counter++;
       }
     }
@@ -196,30 +196,30 @@ contract LipToken is ERC721, Ownable {
 
 
   // Actions
-  function levelUp(uint256 _lipId) public {
-    require(ownerOf(_lipId) == msg.sender);
-    Lip storage lip = lips[_lipId];
-    if(lip.rarity<=20){
-      require(lip.ableToLevel == 10, "Lip is not ready to level up yet");
+  function levelUp(uint256 _plantId) public {
+    require(ownerOf(_plantId) == msg.sender);
+    Plant storage plant = plants[_plantId];
+    if(plant.rarity<=20){
+      require(plant.ableToLevel == 10, "plant is not ready to level up yet");
      
     }
-    if(lip.rarity>20 && lip.rarity<=40){
-      require(lip.ableToLevel == 8, "Lip is not ready to level up yet");
+    if(plant.rarity>20 && plant.rarity<=40){
+      require(plant.ableToLevel == 8, "plant is not ready to level up yet");
      
     }
-    if(lip.rarity>40 && lip.rarity<=60){
-      require(lip.ableToLevel == 6, "Lip is not ready to level up yet");
+    if(plant.rarity>40 && plant.rarity<=60){
+      require(plant.ableToLevel == 6, "plant is not ready to level up yet");
       
     }
-    if(lip.rarity>60 && lip.rarity<=80){
-      require(lip.ableToLevel == 4, "Lip is not ready to level up yet");
+    if(plant.rarity>60 && plant.rarity<=80){
+      require(plant.ableToLevel == 4, "plant is not ready to level up yet");
       
     }
-    if(lip.rarity>80 && lip.rarity<=100){
-      require(lip.ableToLevel == 3, "Lip is not ready to level up yet");
+    if(plant.rarity>80 && plant.rarity<=100){
+      require(plant.ableToLevel == 3, "plant is not ready to level up yet");
       
     }
-    lip.level++;
-    lip.ableToLevel = 0;
+    plant.level++;
+    plant.ableToLevel = 0;
   }
 }

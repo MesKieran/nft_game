@@ -1,9 +1,6 @@
 import React from "react";
 // cards
 import { parts } from "../parts/parts";
-import _r1 from "../assets/images/rarity/_rarity_1.png";
-import _r2 from "../assets/images/rarity/_rarity_2.png";
-import _r3 from "../assets/images/rarity/_rarity_3.png";
 import * as s from "../styles/globalStyles";
 import water from "../assets/images/tool/1.png"
 
@@ -12,14 +9,6 @@ import water from "../assets/images/tool/1.png"
 const ToolRenderer = ({ tool = null, size = 120, style}) => {
   if (!tool) {
     return null;
-  }
-  let rarity = _r1;
-
-  if (tool.rarity >= 7) {
-    rarity = _r2;
-  }
-  if (tool.rarity >= 9) {
-    rarity = _r3;
   }
   let typeImg = 1;
   let type = tool.typeOfTool
@@ -33,7 +22,7 @@ const ToolRenderer = ({ tool = null, size = 120, style}) => {
   }
 
 
-  const lipStyle = {
+  const toolStyle = {
     width: "100%",
     height: "100%",
     position: "absolute",
@@ -52,7 +41,7 @@ const ToolRenderer = ({ tool = null, size = 120, style}) => {
           ...style,
         }}
       >
-      <img alt={"tool"} src={parts.tools[typeImg]} style={lipStyle} />
+      <img alt={"tool"} src={parts.tools[typeImg]} style={toolStyle} />
         
       </div>
     </div>

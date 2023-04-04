@@ -4,39 +4,39 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "./LipToken.sol";
+import "./PlantNFT.sol";
 
 contract Reward is ERC20{
-    LipToken public lipToken;
+    PlantNFT public plantNFT;
     IERC20 erc20Token = IERC20(address(this));
 
     mapping(address => mapping(uint256 => uint256)) public lastClaimTime;
 
     uint256 public constant CLAIM_COOLDOWN = 30 seconds;
 
-    constructor(address _lipTokenAddress) ERC20("TST", "TST"){
+    constructor(address _PlantNFTAddress) ERC20("TST", "TST"){
         _mint(address(this), 1000 ether);
-        lipToken = LipToken(_lipTokenAddress);
+        plantNFT = PlantNFT(_PlantNFTAddress);
         
     }
 
-    function getLips(address _owner) public view returns (LipToken.Lip[] memory) {
-        return lipToken.getOwnerLips(_owner);
+    function getPlants(address _owner) public view returns (PlantNFT.Plant[] memory) {
+        return plantNFT.getOwnerPlants(_owner);
     }
 
-    function getLevel(address _owner, uint256 _lipId) public view returns(uint256){
+    function getLevel(address _owner, uint256 _plantId) public view returns(uint256){
 
-        return lipToken.getOwnerLips(_owner)[_lipId].level;
+        return plantNFT.getOwnerPlants(_owner)[_plantId].level;
     }
 
-    function getRarity(address _owner, uint256 _lipId) public view returns(uint256){
+    function getRarity(address _owner, uint256 _plantId) public view returns(uint256){
         
-        return lipToken.getOwnerLips(_owner)[_lipId].rarity;
+        return plantNFT.getOwnerPlants(_owner)[_plantId].rarity;
     }
     
 
     function claimRewards(address _owner, uint256 _tokenId) external {
-        require(lipToken.ownerOf(_tokenId) == msg.sender, "Only NFT owner can claim reward");
+        require(plantNFT.ownerOf(_tokenId) == msg.sender, "Only NFT owner can claim reward");
 
         uint256 lastClaim = lastClaimTime[msg.sender][_tokenId];
         require(block.timestamp - lastClaim >= CLAIM_COOLDOWN, "Can't claim rewards yet");

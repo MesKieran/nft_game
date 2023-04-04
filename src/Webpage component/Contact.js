@@ -1,6 +1,5 @@
 import React from "react"; 
 import { Container, Row, Col } from "react-bootstrap";
-import { contactConfig } from "./content_option";
 import NavBar from "./Navbar";
 import Footer from './Footer';
 import "./Contact.css";
@@ -19,7 +18,6 @@ export default function Contact() {
             <h1 className="display-4 mb-4">
               Contact Me
               </h1>
-            {/* <hr className="t_border my-4 ml-0 text-left" /> */}
           </Col>
         </Row>
 
@@ -31,10 +29,11 @@ export default function Contact() {
               <br />
               <br />
                 <p>
-                  <strong>Phone: +65 XXX XXX</strong>
+                  <strong>Phone: +65 9005 0685</strong>
                 </p>
             </address>
-            <p>{contactConfig.description}</p>
+            <p>Feel free to tell us about how you feel about the app</p>
+            <p>We are always open for feedback</p>
           </Col>
           <Col lg="7" className="d-flex align-items-center">
             <form  className="contact__form w-100">

@@ -22,31 +22,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 
-
-
-import {Button} from 'bootstrap'
-
-
-
-
-
 function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [loading, setLoading] = useState(false);
 
-  // console.log(data);
-  // console.log(blockchain.account);
-  // console.log("sdads");
-  // console.log(blockchain.lipToken);
-  // console.log(blockchain.reward);
   
 
   const mintNFT = (_account, _name) => {
     setLoading(true);
-    blockchain.lipToken.methods
-      .createRandomLip(_name)
+    blockchain.plantNFT.methods
+      .createRandomPlant(_name)
       .send({
         from: _account,
         value: blockchain.web3.utils.toWei("0.01", "ether"),
@@ -64,7 +51,7 @@ function App() {
 
   const mintToolNFT = (_account) => {
     setLoading(true);
-    blockchain.lipToken.methods
+    blockchain.plantNFT.methods
       .createRandomTool()
       .send({
         from: _account,
@@ -81,9 +68,9 @@ function App() {
       });
   };
 
-  const levelUpLip = (_account, _id) => {
+  const levelUpPlant = (_account, _id) => {
     setLoading(true);
-    blockchain.lipToken.methods
+    blockchain.plantNFT.methods
       .levelUp(_id)
       .send({
         from: _account,
@@ -138,10 +125,10 @@ function App() {
   
 
   useEffect(() => {
-    if (blockchain.account != "" && blockchain.lipToken != null && blockchain.reward != null) {
+    if (blockchain.account != "" && blockchain.plantNFT != null && blockchain.reward != null) {
       dispatch(fetchData(blockchain.account));
     }
-  }, [blockchain.lipToken]);
+  }, [blockchain.plantNFT]);
 
   let NFTTypeArray = ["Aloe Vera Seed", "Banyan Tree Seed", "Orange Seed", "Peach Seed", "Apple Seed", "Bamboo Seed",
   "Aloe Vera Bud", "Banyan Tree Bud", "Orange Bud", "Peach Bud", "Apple Bud", "Bamboo Bud",
@@ -209,7 +196,7 @@ function App() {
   return (
     <s.Screen image={_bgI}>
       <NavBar/>
-      {blockchain.account === "" || blockchain.lipToken === null ? (
+      {blockchain.account === "" || blockchain.plantNFT === null ? (
         <s.Container flex={1} ai={"center"} jc={"center"} style={{marginTop:"0px" }}>
           <s.TextTitle >Connect to the game</s.TextTitle>
           <s.SpacerSmall />
@@ -493,17 +480,14 @@ function App() {
             </div>
           </div>
           </Popup>
-          
 
-
-          
           <s.SpacerSmall />
           <div style={{display:"flex"}}>
           <button style={{margin:"5px"}}
             disabled={loading ? 1 : 0}
             onClick={(e) => {
               e.preventDefault();
-              mintNFT(blockchain.account, "Unknown");
+              mintNFT(blockchain.account, "Default");
             }}
           >
             BUY NFT SEED
@@ -519,21 +503,14 @@ function App() {
             BUY NFT TOOL
           </button>
 
-          {/* {console.log("sds"+data._allLips)}
-          {console.log("sd"+data.allOwnerLips)}
-          <span>{data._allLips}</span>
-          <span>{data.allOwnerLips}</span> */}
-          
           </div>
           <Dropdown/>
-  
-          <s.TextDescription>Number Of NFTs: {data.allOwnerLips.length}</s.TextDescription>
+
+          <s.TextDescription>Number Of NFTs: {data.allOwnerPlants.length}</s.TextDescription>
           <s.TextDescription>TST coin: {data.balanceOfTST}</s.TextDescription>
-          
-          {/* <s.TextDescription>Number Of Tools: {}</s.TextDescription> */}
           <s.SpacerMedium />
           <s.Container jc={"center"} fd={"row"} style={{ flexWrap: "wrap" }}>
-            {data.allLips.map((item, index) => {
+            {data.allPlants.map((item, index) => {
               let experienceNeeded = 0;
               if(item.rarity<=20){
                 experienceNeeded = 10;
@@ -555,7 +532,7 @@ function App() {
                 <s.Container key={index} style={{ padding: "15px"}}>
                   {/* rendering the nft images */}
                   
-                  <NFTRenderer lip={item} PassType={NFTType}/>
+                  <NFTRenderer plant={item} PassType={NFTType}/>
                   {/* <Modal/> */}
                 
                   <s.SpacerXSmall />
@@ -571,10 +548,9 @@ function App() {
                       disabled={loading ? 1 : 0}
                       onClick={(e) => {
                         e.preventDefault();
-                        levelUpLip(blockchain.account, item.id);
+                        levelUpPlant(blockchain.account, item.id);
                       }}
                     >
-                    
                       Level Up
                     </button>
                     <button
@@ -586,18 +562,7 @@ function App() {
                     >
                       GetReward
                     </button>
-                    {/* <button
-                      disabled={loading ? 1 : 0}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        console.log(WaitingTime(blockchain.account, item.id));
-                      }}
-                    >
-                      GetWaitingTime
-                    </button> */}
                     <s.TextDescription>WaitingTime: 30s</s.TextDescription>
-                    
-
                   </s.Container>
                 </s.Container>
               );

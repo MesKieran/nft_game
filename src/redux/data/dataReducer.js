@@ -1,8 +1,8 @@
 const initialState = {
   loading: false,
-  allLips: [],
+  allPlants: [],
   balanceOfTST: [],
-  allOwnerLips: [],
+  allOwnerPlants: [],
   allTools: [],
   allOwnerTools:[],
   error: false,
@@ -20,9 +20,9 @@ const dataReducer = (state = initialState, action) => {
       return {
         ...initialState,
         loading: false,
-        allLips: action.payload.allLips,
+        allPlants: action.payload.allPlants,
         balanceOfTST:action.payload.balanceOfTST,
-        allOwnerLips: action.payload.allOwnerLips,
+        allOwnerPlants: action.payload.allOwnerPlants,
         allTools: action.payload.allTools,
         allOwnerTools: action.payload.allOwnerTools,
       };

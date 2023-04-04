@@ -25,21 +25,21 @@ export const fetchData = (account) => {
   return async (dispatch) => {
     dispatch(fetchDataRequest());
     try {
-      let allLips = await store
+      let allPlants = await store
         .getState()
-        .blockchain.lipToken.methods.getLips()
+        .blockchain.plantNFT.methods.getPlants()
         .call();
-      let allOwnerLips = await store
+      let allOwnerPlants = await store
         .getState()
-        .blockchain.lipToken.methods.getOwnerLips(account)
+        .blockchain.plantNFT.methods.getOwnerPlants(account)
         .call();
       let allTools = await store
         .getState()
-        .blockchain.lipToken.methods.getTools()
+        .blockchain.plantNFT.methods.getTools()
         .call();
       let allOwnerTools = await store
         .getState()
-        .blockchain.lipToken.methods.getOwnerTools(account)
+        .blockchain.plantNFT.methods.getOwnerTools(account)
         .call();
       let balanceOfTST = await store
         .getState()
@@ -47,9 +47,9 @@ export const fetchData = (account) => {
         .call();
       dispatch(
         fetchDataSuccess({
-          allLips,
+          allPlants,
           balanceOfTST,
-          allOwnerLips,
+          allOwnerPlants,
           allTools,
           allOwnerTools,
         })

@@ -49,7 +49,7 @@ function Dropdown(){
 
     const useTool = (_account, _id, _toolId) => {
         setLoading(true);
-        blockchain.lipToken.methods
+        blockchain.plantNFT.methods
           .useTool(_account, _id, _toolId)
           .send({
             from: _account,
@@ -71,7 +71,7 @@ function Dropdown(){
 
     const mintTool = (_account) => {
         setLoading(true);
-        blockchain.lipToken.methods
+        blockchain.plantNFT.methods
         .createRandomTool()
         .send({
             from: _account,
@@ -91,10 +91,10 @@ function Dropdown(){
     
 
     useEffect(() => {
-        if (blockchain.account != "" && blockchain.lipToken != null) {
+        if (blockchain.account != "" && blockchain.plantNFT != null) {
         dispatch(fetchData(blockchain.account));
         }
-    }, [blockchain.lipToken]);
+    }, [blockchain.plantNFT]);
 
     const [open, setOpen] = useState(false);
 

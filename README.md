@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+### Plant NFT Market - README
+## Introduction
+TreesTogther is a decentralized web application that allows users to purchase and collect plant and tool NFTs, learn about agriculture, and earn rewards in TST tokens. The project is built on Ethereum blockchain using Truffle, Solidity, and React.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
+# Prerequisites
+To run the project, you will need to have the following installed on your system:
 
-## Available Scripts
+    Ganache: a personal blockchain for Ethereum development
+    Node.js: an open-source, cross-platform JavaScript runtime environment
+# Installing
+To install the dependencies required to run the project, run the following command in the terminal:
+"npm install"
+# Running the Project
+To deploy the smart contracts on Ganache, run the following command in the terminal:
+"truffle migrate --reset"
 
-In the project directory, you can run:
+To start the React environment for the project, run the following command in the terminal:
+"npm start"
 
-### `npm start`
+## Usage
+# Connecting to MetaMask
+To use the application, users must have the MetaMask browser extension installed and connected to the local Ganache network. When users first access the site, they will be prompted to connect their MetaMask wallet.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Purchasing and Collecting NFTs
+Users can purchase and collect plant and tool NFTs on the main page of the application. Each NFT is unique and contains information about the plant or tool it represents, such as its DNA, rarity, and level. Users can level up their plants by using tools and earn rewards in TST tokens.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Learning About Agriculture
+Users can learn about agriculture by clicking on the buttons in the Plant Information section of the main page. Each button corresponds to a different plant and displays information about its agricultural impact, such as production emissions and carbon absorption.
 
-### `npm test`
+Contacting the Website Owner
+Users can contact the website owner by filling out the form on the Contact page of the application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Future Work
+    Implement a marketplace for users to buy and sell plant and tool NFTs.
+    Make TST tokens more useful in the application to increase participation in tokenomics.
+    Improve the smart contract for plant NFTs to allow fully grown plants to generate new seed NFTs.
+    Add a quiz page to test users' knowledge about blockchain and saving the environment and allow users to earn TST tokens by completing quizzes.
+    Write a more detailed plan for integrating third parties, such as farm owners and government agencies, to start planting trees and taking action.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Authors
+Wu Xiangjiekang - Initial work
