@@ -16,10 +16,10 @@ const NFTRenderer = ({ lip = null, size = 250, style, PassType }) => {
   }
   let rarity = _r1;
 
-  if (lip.rarity >= 80) {
+  if (lip.rarity >= 50) {
     rarity = _r2;
   }
-  if (lip.rarity >= 95) {
+  if (lip.rarity >= 80) {
     rarity = _r3;
   }
 
@@ -36,8 +36,6 @@ const NFTRenderer = ({ lip = null, size = 250, style, PassType }) => {
     addonMouth3: dnaStr.substring(12, 14) % 5,
     name: lip.name,
   }
- 
-  
 
   const lipStyle = {
     width: "100%",
@@ -52,7 +50,6 @@ const NFTRenderer = ({ lip = null, size = 250, style, PassType }) => {
   };
 
   return (
-  
     <div
       style={{
         minWidth: size,
@@ -83,9 +80,9 @@ const NFTRenderer = ({ lip = null, size = 250, style, PassType }) => {
       />
       <img alt={"rarity"} src={rarity} style={lipStyle} />
     </div>
-    
-   
   );
 };
 
 export default NFTRenderer;
+
+

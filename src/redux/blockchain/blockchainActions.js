@@ -44,11 +44,9 @@ export const connect = () => {
         const networkId = await window.ethereum.request({
           method: "net_version",
         });
-        
         const lipTokenNetworkData = await LipToken.networks[networkId];
         const RewardNetworkData = await Reward.networks[networkId];
         if (lipTokenNetworkData && RewardNetworkData) {
-          
           const lipToken = new web3.eth.Contract(
             LipToken.abi,
             lipTokenNetworkData.address
@@ -65,8 +63,6 @@ export const connect = () => {
               web3: web3,
             })
           );
-         
-          
           // Add listeners start
           window.ethereum.on("accountsChanged", (accounts) => {
             dispatch(updateAccount(accounts[0]));

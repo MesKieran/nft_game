@@ -29,7 +29,6 @@ export const fetchData = (account) => {
         .getState()
         .blockchain.lipToken.methods.getLips()
         .call();
-      
       let allOwnerLips = await store
         .getState()
         .blockchain.lipToken.methods.getOwnerLips(account)
@@ -46,9 +45,6 @@ export const fetchData = (account) => {
         .getState()
         .blockchain.reward.methods.ReturnBalance(account)
         .call();
-      
-      
-
       dispatch(
         fetchDataSuccess({
           allLips,
@@ -56,7 +52,6 @@ export const fetchData = (account) => {
           allOwnerLips,
           allTools,
           allOwnerTools,
-          
         })
       );
     } catch (err) {
@@ -65,3 +60,7 @@ export const fetchData = (account) => {
     }
   };
 };
+
+
+
+
